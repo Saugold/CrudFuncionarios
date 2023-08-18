@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SodreModel> 
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Funcionario</th>
+            <th scope="col">ID do Cargo</th>
+            <th scope="col">Salário</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null)
+        {
+            @foreach(var funcionario in Model)
+            {
+                <tr>
+                    <td>@funcionario.Id</td>
+                    <th scope="row">@funcionario.Nome</th>
+                    @switch (funcionario.IdCargo)
+                    {
+                        case 1:
+                            <td>Analista de Sistemas</td>
+                            break;
+                        case 2:
+                            <td>Administrador</td>
+                            break;
+                        case 3:
+                            <td>Gestor</td>
+                            break;
+                    }
+                    
+                    <td>R$@funcionario.Salario</td>
+                    <td>
+                            <a asp-controller="Funcionarios" asp-action="Editar" class="btn btn-warning" asp-route-id="@funcionario.Id">Editar</a>
+                            <a asp-controller="Funcionarios" asp-action="Excluir" class="btn btn-danger" asp-route-id="@funcionario.Id">Excluir</a>
+                    </td>
+                    
+                </tr>    
+            }
+             
+        }
+        
+    </tbody>
+</table>
+    <div class="d-flex justify-content-between aling-items margin-top-100px ">
+    <a class="btn btn-success margin mx-2" asp-action="Cadastrar">Cadastrar</a>
+</div>
+</div>
+

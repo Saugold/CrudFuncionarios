@@ -1,0 +1,48 @@
+﻿@model List<SodreModel>
+
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Cargo</th>
+            <th scope="col">Qtd Funcionarios</th>
+            <th scope="col">Total de Salários</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var funcionario in Model)
+            {
+                <tr>
+                    
+                    
+                    @switch (funcionario.IdCargo)
+                    {
+                        case 1:
+                            <td>Analista de Sistemas</td>
+                            break;
+                        case 2:
+                            <td>Administrador</td>
+                            break;
+                        case 3:
+                            <td>Gestor</td>
+                            break;
+                    }
+
+                    <td>@funcionario.Quantidade</td>
+                    <td>@funcionario.Salario</td>
+                    
+
+                </tr>
+            }
+
+        }
+
+    </tbody>
+</table>
+</div>
+             
+
+
